@@ -26,7 +26,11 @@ const setupMiddleware = (app: Application) => {
             parameterLimit: 50000,
         })
     );
-    app.use(cors());
+    app.use(
+        cors({
+            origin: true,
+        })
+    );
 
     // if (process.env.NODE_ENV === "production") {
     //     app.use(
