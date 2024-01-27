@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { HttpStatusCode, APIErrorResponse } from "#shared/types/RestAPI.js";
 import { prepareErrorResponse } from "#utils/apiResponse.js";
-import path from "path";
 
 export class AppError extends Error {
     public statusCode: HttpStatusCode;
@@ -29,30 +28,18 @@ export const APIErrorHandler = (
         message,
         error,
     });
-    res.status(code); //.json(errorResponse)
+    res.status(code);
 
-    if (code === HttpStatusCode.NOT_FOUND) {
-        if (req.accepts("html")) {
-            //     return res.sendFile(path.join("views", "404.html"))
-            if (process.env.NODE_ENV === "production")
-                return res.sendFile(
-                    path.resolve(
-                        __dirname,
-                        "..",
-                        "..",
-                        "..",
-                        "build",
-                        "frontend",
-                        "index.html"
-                    )
-                );
-        }
-        if (req.accepts("json")) {
-            return res.json(errorResponse);
-        } else {
+    if (process.env.NODE_ENV === "production") {
+        if (code === HttpStatusCode.NOT_FOUND) {
+            // if (req.accepts("html")) {
+            //     return res.sendFile("404.html");
+            // }
+            if (req.accepts("json")) {
+                return res.json(errorResponse);
+            }
             return res.type("txt").send(JSON.stringify(message));
         }
-    } else {
-        res.json(errorResponse);
     }
+    res.json(errorResponse);
 };

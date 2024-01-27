@@ -9,7 +9,7 @@ import {
 import { AppError } from "#middlewares/errorMiddleware.js";
 import { HttpStatusCode } from "#shared/types/RestAPI.js";
 import { prepareSuccessResponse } from "#utils/apiResponse.js";
-import webConfig from "#config/web.config.js";
+import config from "#config/config.js";
 
 export const createTask = async (
     req: Request,
@@ -93,7 +93,7 @@ export const readTasks = async (
 
         const page = Math.max(1, parseInt(`${filter.page || 1}`));
         const itemsPerPage = parseInt(
-            `${filter.itemsPerPage || webConfig.itemsPerPage}`
+            `${filter.itemsPerPage || config.ITEMS_PER_PAGE}`
         );
         const skipItems = (page - 1) * itemsPerPage;
 

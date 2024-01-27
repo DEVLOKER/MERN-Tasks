@@ -1,10 +1,9 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "useDefineForClassFields": true,
-        "lib": ["ES2020", "DOM", "DOM.Iterable"],
-        "module": "CommonJS",
-        "skipLibCheck": true,
+        // "useDefineForClassFields": true,
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "target": "ESNext",
+        "module": "commonjs",
 
         /* path */
         "outDir": "./build",
@@ -14,19 +13,35 @@
             "@/shared/*": ["../backend/src/shared/*"],
             "@/*": ["./src/*"]
         },
+
+        "skipLibCheck": true,
+        "types": ["vite/client", "node"],
+
         /* Bundler mode */
-        // "moduleResolution": "bundler",
+        "moduleResolution": "Node",
         "allowImportingTsExtensions": true,
+        "allowSyntheticDefaultImports": true,
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "noEmit": true,
+        // "noEmit": true,
         "jsx": "react-jsx",
+        "removeComments": true,
 
         /* Linting */
         "strict": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+
+        "composite": true,
+        "allowJs": true,
+        "emitDeclarationOnly": true,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "useDefineForClassFields": false,
+        "forceConsistentCasingInFileNames": true
+        // "preserveSymlinks": false
     },
     "include": ["src"],
     "references": [

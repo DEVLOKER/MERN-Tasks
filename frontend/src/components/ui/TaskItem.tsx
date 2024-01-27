@@ -2,7 +2,7 @@ import React from "react";
 import { Button, List, Badge } from "antd";
 import { TTask } from "@/shared/types/Task";
 import { useNavigate } from "react-router-dom";
-import useDeleteModalContext from "@/hooks/useDeleteModalContext";
+import useDeleteModal from "@/hooks/useDeleteModal";
 
 type Props = {
     task: TTask;
@@ -21,14 +21,14 @@ const TaskItem = ({ task }: Props) => {
         navigate(`/detail/${task.id}`, { replace: true });
     };
 
-    const { openModal } = useDeleteModalContext();
+    const { openModal } = useDeleteModal();
     const handleDelete = () => openModal(task);
 
     return (
         <Badge.Ribbon
             text={task.complete ? "complete" : "not complete"}
-            placement="end"
-            style={{ top: 0 }}
+            placement="start"
+            style={{ top: -5, left: -10 }}
             color={task.complete ? "green" : "red"}
         >
             <List.Item

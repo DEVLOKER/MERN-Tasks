@@ -1,16 +1,12 @@
 import mongoose from "mongoose";
-import dbConfig from "#config/db.config.js";
+import config from "#config/config.js";
 
 mongoose.set("strictQuery", false);
 mongoose.set("runValidators", true);
 
-const options = {
-    autoIndex: true,
-};
-
 const dbConnect = async () => {
     try {
-        mongoose.connect(dbConfig.url, options);
+        mongoose.connect(config.DB_URL, { autoIndex: true });
         mongoose.connection
             .once("open", (stream) => {
                 console.log("⚡️ MongoDB connection established successfully!");

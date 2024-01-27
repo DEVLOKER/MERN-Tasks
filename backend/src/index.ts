@@ -1,10 +1,10 @@
 import dotenv from "dotenv";
-dotenv.config();
+dotenv.config(); // {path: `./.env.${process.env.NODE_ENV}`}
 
 import { startWebServer } from "#services/express.service.js";
 import { dbConnect } from "#services/mongodb.service.js";
 
-const startApp = (async () => {
+(async () => {
     try {
         await startWebServer();
         await dbConnect();

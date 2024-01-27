@@ -1,16 +1,16 @@
 import React from "react";
 import { Modal } from "antd";
-import useDeleteModalContext from "@/hooks/useDeleteModalContext";
-import useTasks, { useDeleteTask } from "@/hooks/useTasks";
+import useDeleteModal from "@/hooks/useDeleteModal";
+import useTasks from "@/hooks/useTasks";
 
 const ConfirmDeleteDialog = () => {
     const {
         state: { isModalOpen, task },
         closeModal,
-    } = useDeleteModalContext();
+    } = useDeleteModal();
 
     const {
-        deleteTaskMutation: { status, mutate: deleteTask },
+        deleteTaskMutation: { mutate: deleteTask },
     } = useTasks();
 
     const handleOk = () => {

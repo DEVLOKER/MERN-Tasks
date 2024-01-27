@@ -2,15 +2,9 @@ import { z } from "zod";
 import { env } from "process";
 
 const envVariables = z.object({
-    NODE_ENV: z
-        .enum(["development", "production", "test"])
-        .default("development"),
+    NODE_ENV: z.enum(["development", "production", "test"]), //.default("development"),
     HTTP_PORT: z.number(),
-    DB_HOST: z.string(),
-    DB_PORT: z.number(),
-    DB_NAME: z.string(),
-    DB_USER: z.string(),
-    DB_PASSWORD: z.string(),
+    DB_URL: z.string(),
     ITEMS_PER_PAGE: z.number(),
 });
 

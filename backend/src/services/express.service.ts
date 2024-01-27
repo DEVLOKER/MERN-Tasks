@@ -7,7 +7,7 @@ import { notFoundPathHandler } from "#middlewares/notFoundPathHandler.js";
 import TaskRouter from "#routes/task.route.js";
 
 // import config
-import webConfig from "#config/web.config.js";
+import config from "#config/config.js";
 
 // import utils
 import http from "http";
@@ -26,7 +26,17 @@ const setupMiddleware = (app: Application) => {
         })
     );
 
-    // app.use("/", express.static(path.join("build", "frontend")));
+    if (process.env.NODE_ENV === "production") {
+        app.use(
+            "/",
+            express.static(path.join(__dirname, "..", "..", "frontend"))
+        );
+
+        // ^/$|/index(.html)?
+        app.get("/", (req, res) => {
+            res.sendFile("index.html");
+        });
+    }
 };
 
 // use routes
@@ -42,7 +52,7 @@ const startServer = async (app: Application) => {
     const webServer = http.createServer(app);
 
     webServer
-        .listen(webConfig.port, () => {
+        .listen(config.HTTP_PORT, () => {
             const addr = webServer.address() as AddressInfo;
             console.log(
                 `🚀 Web Server is running at http://${addr.address}:${addr.port}`
