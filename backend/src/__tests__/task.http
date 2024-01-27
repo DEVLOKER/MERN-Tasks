@@ -1,0 +1,34 @@
+@HTTP_SERVER_URL = http://localhost:8080/api/v1/tasks
+
+
+###
+POST {{HTTP_SERVER_URL}}/create HTTP/1.1
+content-type: application/json
+
+{
+    "title": "title 01",
+    "description": "description 01"
+}
+
+###
+GET {{HTTP_SERVER_URL}}/read
+    ?page=1
+    &itemsPerPage=5
+    # &title=01
+    # &description=01
+
+###
+GET {{HTTP_SERVER_URL}}/read/65b376b4cd7c94251b43be40
+
+###
+PATCH {{HTTP_SERVER_URL}}/update/65b376b4cd7c94251b43be40 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "title 02", 
+    "description": "description 02"
+}
+
+###
+DELETE {{HTTP_SERVER_URL}}/delete/65b376b4cd7c94251b43be40
+

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module": "ESNext",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "outDir": "./build",
+        "rootDir": "./src",
+        "composite": true,
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}
