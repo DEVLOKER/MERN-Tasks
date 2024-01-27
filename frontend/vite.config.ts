@@ -22,8 +22,8 @@ export default defineConfig({
         },
     },
     build: {
-        // outDir: "../backend/build/frontend",
-        outDir: "build",
+        outDir: "../backend/build/frontend",
+        // outDir: "build",
     },
     preview: {
         port: 3000,
