@@ -1,5 +1,6 @@
 import express, { Express, Application } from "express";
 // import middlewares
+import cors from "cors";
 import { loggerHandler } from "#middlewares/loggerMiddleware.js";
 import { APIErrorHandler } from "#middlewares/errorMiddleware.js";
 import { notFoundPathHandler } from "#middlewares/notFoundPathHandler.js";
@@ -25,6 +26,7 @@ const setupMiddleware = (app: Application) => {
             parameterLimit: 50000,
         })
     );
+    app.use(cors());
 
     if (process.env.NODE_ENV === "production") {
         app.use(
