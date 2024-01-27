@@ -28,17 +28,17 @@ const setupMiddleware = (app: Application) => {
     );
     app.use(cors());
 
-    if (process.env.NODE_ENV === "production") {
-        app.use(
-            "/",
-            express.static(path.join(__dirname, "..", "..", "frontend"))
-        );
+    // if (process.env.NODE_ENV === "production") {
+    //     app.use(
+    //         "/",
+    //         express.static(path.join(__dirname, "..", "..", "frontend"))
+    //     );
 
-        // ^/$|/index(.html)?
-        app.get("/", (req, res) => {
-            res.sendFile("index.html");
-        });
-    }
+    //     // ^/$|/index(.html)?
+    //     app.get("/", (req, res) => {
+    //         res.sendFile("index.html");
+    //     });
+    // }
 };
 
 // use routes
