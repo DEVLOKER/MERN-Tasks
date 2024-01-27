@@ -7,7 +7,7 @@
         "#*": "./build/backend/*"
     },
     "scripts": {
-        "build": "npx tsc --outDir \"./build/backend\"",
+        "build": "npx tsc --outDir \"./build/backend\" && cd .. && cd frontend && npm run build",
         "build:watch": "npx tsc --watch --outDir \"./build/backend\"",
         "start": "node \"./build/backend/index.js\"",
         "dev": "concurrently \"npm run build:watch\" \"nodemon -q ./build/backend/index.js\""
